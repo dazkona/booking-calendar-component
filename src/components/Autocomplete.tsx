@@ -8,10 +8,11 @@ export type Value = {
 
 interface AutocompleteProps {
   url: string;
+  placeholder?: string;
   onSelectValue: (valueId: string) => void;
 }
 
-export const Autocomplete = ({ url, onSelectValue }: AutocompleteProps) => {
+export const Autocomplete = ({ url, placeholder = "Choose a value...", onSelectValue }: AutocompleteProps) => {
   const [values, setValues] = useState<Value[]>([]);
   const [filteredValues, setFilteredValues] = useState<Value[]>([]);
   const [showList, setShowList] = useState<boolean>(false);
@@ -66,7 +67,7 @@ export const Autocomplete = ({ url, onSelectValue }: AutocompleteProps) => {
       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
       <input
         type="text"
-        placeholder="Chose a value..."
+        placeholder={placeholder}
         onChange={onType}
         onFocus={() => setShowList(true)}
         onMouseLeave={handleMouseLeave}

@@ -110,6 +110,7 @@ const WeeklyCalendar = () => {
           ) : (
             <Autocomplete
               url={`${import.meta.env.VITE_API_URL}/stations`}
+              placeholder="Select a location to filter the bookings"
               onSelectValue={(id: string) => {
                 cleanSelectedBooking();
                 setSelectedStationId(id);
