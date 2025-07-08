@@ -31,7 +31,7 @@ const WeeklyCalendar = () => {
     });
 
     setWeekBookings(weekDailyBookings);
-  }, [visibleWeek, visibleYear]);
+  }, [visibleWeek, visibleYear, selectedStationId]);
 
   //-------------------------------------------------------
   const toogleWeekPicker = () => setShowWeekPicker((prev) => !prev);
