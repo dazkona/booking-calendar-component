@@ -34,7 +34,7 @@ describe("Autocomplete Component", () => {
     await act(async () => {
       render(<Autocomplete url="/stations" onSelectValue={() => {}} />);
     });
-    fireEvent.focus(screen.getByPlaceholderText(/Chose a value/i));
+    fireEvent.focus(screen.getByPlaceholderText(/Choose a value/i));
     expect(await screen.findByText("Station 1")).toBeInTheDocument();
     expect(await screen.findByText("Station 2")).toBeInTheDocument();
   });
@@ -44,7 +44,7 @@ describe("Autocomplete Component", () => {
     await act(async () => {
       render(<Autocomplete url="/error" onSelectValue={() => {}} />);
     });
-    fireEvent.focus(screen.getByPlaceholderText(/Chose a value/i));
+    fireEvent.focus(screen.getByPlaceholderText(/Choose a value/i));
     expect(await screen.findByText(/HTTP error! status: 500/i)).toBeInTheDocument();
   });
 
@@ -52,9 +52,9 @@ describe("Autocomplete Component", () => {
     await act(async () => {
       render(<Autocomplete url="/stations" onSelectValue={() => {}} />);
     });
-    fireEvent.focus(screen.getByPlaceholderText(/Chose a value/i));
+    fireEvent.focus(screen.getByPlaceholderText(/Choose a value/i));
     await screen.findByText("Station 1");
-    const input = screen.getByPlaceholderText(/Chose a value/i);
+    const input = screen.getByPlaceholderText(/Choose a value/i);
     fireEvent.change(input, { target: { value: "Station 2" } });
     expect(await screen.findByText("Station 2")).toBeInTheDocument();
     expect(screen.queryByText("Station 1")).not.toBeInTheDocument();
@@ -65,7 +65,7 @@ describe("Autocomplete Component", () => {
     await act(async () => {
       render(<Autocomplete url="/stations" onSelectValue={onSelectValue} />);
     });
-    fireEvent.focus(screen.getByPlaceholderText(/Chose a value/i));
+    fireEvent.focus(screen.getByPlaceholderText(/Choose a value/i));
     const value = await screen.findByText("Station 1");
     fireEvent.click(value);
     expect(onSelectValue).toHaveBeenCalledWith("1");

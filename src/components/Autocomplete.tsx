@@ -12,7 +12,7 @@ interface AutocompleteProps {
   onSelectValue: (valueId: string) => void;
 }
 
-export const Autocomplete = ({ url, placeholder = "Choose a value...", onSelectValue }: AutocompleteProps) => {
+export const Autocomplete = ({ url, placeholder = "Choose a value", onSelectValue }: AutocompleteProps) => {
   const [values, setValues] = useState<Value[]>([]);
   const [filteredValues, setFilteredValues] = useState<Value[]>([]);
   const [showList, setShowList] = useState<boolean>(false);

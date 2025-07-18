@@ -85,8 +85,10 @@ it("shows and hides WeekPicker on click", () => {
 // 4. Filters bookings by selected station
 it("filters bookings by selected station", async () => {
   render(<WeeklyCalendar />);
-  fireEvent.focus(screen.getByPlaceholderText(/Chose a value/i));
-  fireEvent.change(screen.getByPlaceholderText(/Chose a value/i), { target: { value: "Station 1" } });
+  fireEvent.focus(screen.getByPlaceholderText(/Select a location to filter the bookings/i));
+  fireEvent.change(screen.getByPlaceholderText(/Select a location to filter the bookings/i), {
+    target: { value: "Station 1" },
+  });
   // Wait for Station 1 to appear and click it
   const stationOption = await screen.findByText(/Station 1/);
   fireEvent.click(stationOption);
@@ -96,8 +98,10 @@ it("filters bookings by selected station", async () => {
 // 5. Clears selected station and booking when Eraser is clicked
 it("clears selected station and booking when Eraser is clicked", async () => {
   render(<WeeklyCalendar />);
-  fireEvent.focus(screen.getByPlaceholderText(/Chose a value/i));
-  fireEvent.change(screen.getByPlaceholderText(/Chose a value/i), { target: { value: "Station 1" } });
+  fireEvent.focus(screen.getByPlaceholderText(/Select a location to filter the bookings/i));
+  fireEvent.change(screen.getByPlaceholderText(/Select a location to filter the bookings/i), {
+    target: { value: "Station 1" },
+  });
   // Wait for Station 1 to appear and click it
   const eraser = document.querySelector(".icon-remove-selected-station");
   if (eraser) fireEvent.click(eraser); // Eraser icon
@@ -107,14 +111,16 @@ it("clears selected station and booking when Eraser is clicked", async () => {
 // 6. Calls Autocomplete with the correct URL from environment variable
 it("calls Autocomplete with the correct URL from env", () => {
   render(<WeeklyCalendar />);
-  expect(screen.getByPlaceholderText(/Chose a value/i)).toBeInTheDocument();
+  expect(screen.getByPlaceholderText(/Select a location to filter the bookings/i)).toBeInTheDocument();
 });
 
 // 7. Renders correct station name in the filter bar
 it("renders correct station name in the filter bar", async () => {
   render(<WeeklyCalendar />);
-  fireEvent.focus(screen.getByPlaceholderText(/Chose a value/i));
-  fireEvent.change(screen.getByPlaceholderText(/Chose a value/i), { target: { value: "Station 1" } });
+  fireEvent.focus(screen.getByPlaceholderText(/Select a location to filter the bookings/i));
+  fireEvent.change(screen.getByPlaceholderText(/Select a location to filter the bookings/i), {
+    target: { value: "Station 1" },
+  });
   // Wait for Station 1 to appear and click it
   const stationOption = await screen.findByText(/Station 1/);
   fireEvent.click(stationOption);
